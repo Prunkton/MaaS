@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <parent>
-        <groupId>groupId</groupId>
+        <groupId>com.oms.maas</groupId>
         <artifactId>MaaS</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
@@ -23,7 +23,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>1.5.1.RELEASE</version>
+                <version>${spring.boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -34,40 +34,30 @@
     <dependencies>
 
         <dependency>
+            <groupId>com.oms.maas</groupId>
+            <artifactId>generator</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
         </dependency>
 
-
-        <dependency>
-            <groupId>org.glassfish.web</groupId>
-            <artifactId>el-impl</artifactId>
-            <version>2.2</version>
-            <scope>runtime</scope>
-        </dependency>
-
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring.boot.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
-            <version>${spring.boot.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jersey</artifactId>
             <version>${spring.boot.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>groupId</groupId>
-            <artifactId>generator</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <dependency>
@@ -88,34 +78,23 @@
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-codegen</artifactId>
-            <version>${swagger-codegen.version}</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>21.0</version>
         </dependency>
-        <dependency><!-- Google Json -->
+
+        <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.8.1</version>
         </dependency>
 
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <artifactId>maven-help-plugin</artifactId>
-                <version>2.2</version>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>xml-maven-plugin</artifactId>
-                <version>1.0</version>
-            </plugin>
+            <!-- execute Generator first -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -133,7 +112,7 @@
                 </executions>
                 <dependencies>
                     <dependency>
-                        <groupId>groupId</groupId>
+                        <groupId>com.oms.maas</groupId>
                         <artifactId>generator</artifactId>
                         <version>${project.version}</version>
                         <scope>compile</scope>
@@ -165,7 +144,7 @@
                 </executions>
                 <dependencies>
                     <dependency>
-                        <groupId>groupId</groupId>
+                        <groupId>com.oms.maas</groupId>
                         <artifactId>generator</artifactId>
                         <version>${project.version}</version>
                         <scope>compile</scope>
@@ -192,7 +171,7 @@
                 </executions>
                 <dependencies>
                     <dependency>
-                        <groupId>groupId</groupId>
+                        <groupId>com.oms.maas</groupId>
                         <artifactId>generator</artifactId>
                         <version>${project.version}</version>
                         <scope>compile</scope>
@@ -312,14 +291,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
             </plugin>
         </plugins>
 
